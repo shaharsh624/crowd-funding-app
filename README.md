@@ -1,3 +1,38 @@
+# Crowd Funding App
+
+### Steps for Running locally
+
+-   [Click here](https://metamask.io/download/) to Install Metamask Extension for your browser, and set it up with some LineaETH.
+
+-   Clone the repo into your folder
+
+    ```
+    git clone https://github.com/shaharsh624/crowd-funding-app
+    ```
+
+*   Then perform the following steps
+
+    ```
+    cd client
+    ```
+
+    ```
+    npm install
+    ```
+
+    ```
+    npm run dev
+    ```
+
+    The App will run on http://localhost:5173
+
+<br>
+<br>
+
+---
+
+# Other Extra Stuff
+
 # Client
 
 Starter template to build onchain applications with [thirdweb](https://thirdweb.com) and [vite](https://vitejs.dev/).
