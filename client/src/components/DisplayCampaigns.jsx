@@ -17,29 +17,33 @@ const DisplayCampaigns = ({ title, isLoading, campaigns }) => {
         {title} ({campaigns.length})
       </h1>
 
-      <div className="flex flex-wrap mt-[20px] gap-[26px]">
+      <div className="flex flex-wrap mt-[20px] gap-8 sm:gap-8 md:gap-[40px] lg:gap-20">
         {isLoading && (
           <img
             src={loader}
             alt="loader"
-            className="w-[100px] h-[100px] object-contain"
+            className="w-[100px] h-[100px] object-contain mx-auto"
           />
         )}
 
         {!isLoading && campaigns.length === 0 && (
           <p className="font-epilogue font-semibold text-[14px] leading-[30px] text-[#818183]">
-            You have not created any campigns yet
+            You have not created any campaigns yet
           </p>
         )}
 
         {!isLoading &&
           campaigns.length > 0 &&
           campaigns.map((campaign) => (
-            <FundCard
+            <div
               key={uuidv4()}
-              {...campaign}
-              handleClick={() => handleNavigate(campaign)}
-            />
+              className="transition-transform transform hover:scale-105 w-full sm:w-[48%] md:w-[30%] lg:w-[22%] xl:w-[18%]"
+            >
+              <FundCard
+                {...campaign}
+                handleClick={() => handleNavigate(campaign)}
+              />
+            </div>
           ))}
       </div>
     </div>
