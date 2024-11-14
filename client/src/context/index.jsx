@@ -51,6 +51,8 @@ export const StateContextProvider = ({ children }) => {
   const getCampaigns = async () => {
     const campaigns = await contract.call("getCampaigns");
 
+    console.log(campaigns)
+
     const parsedCampaings = campaigns.map((campaign, i) => ({
       owner: campaign.owner,
       title: campaign.title,
@@ -59,13 +61,11 @@ export const StateContextProvider = ({ children }) => {
       target: campaign.target
         ? ethers.utils.formatEther(campaign.target.toString())
         : "0",
-      amountCollected: campaign.amountCollected
-        ? ethers.utils.formatEther(campaign.amountCollected.toString())
-        : "0",
+      amountCollected: campaign.amountRaised ? ethers.utils.formatEther(campaign.amountRaised.toString()) : "0",
       image: campaign.image,
       pId: i,
     }));
-
+    
     return parsedCampaings;
   };
 
@@ -103,6 +103,11 @@ export const StateContextProvider = ({ children }) => {
     return parsedDonations;
   };
 
+  const getCampaignById = async (pId) => {
+    const campaigns = await getCampaigns();
+    return campaigns.find((campaign) => campaign.pId === pId);
+  };
+
   return (
     <StateContext.Provider
       value={{
@@ -114,6 +119,7 @@ export const StateContextProvider = ({ children }) => {
         getUserCampaigns,
         donate,
         getDonations,
+        getCampaignById
       }}
     >
       {children}
