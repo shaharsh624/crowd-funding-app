@@ -40,7 +40,6 @@ const Navbar = () => {
             else connectWallet();
           }}
         />
-        
       </div>
 
       {/* Small screen navigation */}
